@@ -255,7 +255,7 @@ public class Main {
     }
 
     private static void searchMovies(Scanner scanner, MovieCollection collection) {
-        System.out.print("Enter search term: movie: ");
+        System.out.print("Enter search term: movie or series ");
         String searchTerm = scanner.nextLine();
 
         System.out.println("Choose search option: title, year, director, or genre");
