@@ -101,16 +101,17 @@ public class MovieCollection {
             return;
         }
 
+        List<Movie> result;
         switch (searchBy.toLowerCase()) {
             case "title":
-                movies.stream()
+                result = movies.stream()
                         .filter(m -> m.getTitle().toLowerCase().contains(searchTerm.toLowerCase()))
                         .collect(Collectors.toList());
                 break;
             case "year":
                 try {
                     int year = Integer.parseInt(searchTerm);
-                    movies.stream()
+                    result = movies.stream()
                             .filter(m -> m.getYear() == year)
                             .collect(Collectors.toList());
                 } catch (NumberFormatException e) {
@@ -119,18 +120,26 @@ public class MovieCollection {
                 }
                 break;
             case "director":
-                movies.stream()
+                result = movies.stream()
                         .filter(m -> m.getDirector().toLowerCase().contains(searchTerm.toLowerCase()))
                         .collect(Collectors.toList());
                 break;
             case "genre":
-                movies.stream()
+                result = movies.stream()
                         .filter(m -> m.getGenre().toLowerCase().contains(searchTerm.toLowerCase()))
                         .collect(Collectors.toList());
                 break;
             default:
                 System.out.println("Invalid search option. Please choose title, year, director, or genre.");
+                return;
         }
 
+        // Check if there are results to display
+        if (result.isEmpty()) {
+            System.out.println("No movies found matching the criteria.");
+        } else {
+            System.out.println("Search results:");
+            result.forEach(System.out::println); // Print each movie found
+        }
     }
 }
