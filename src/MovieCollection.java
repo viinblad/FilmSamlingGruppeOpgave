@@ -12,12 +12,12 @@ public class MovieCollection {
     }
 
     // Create - add a movie (with duplicate title check)
-    public void addMovie(Movie movie) {
+    public boolean addMovie(Movie movie) {
         if (findMovie(movie.getTitle()) == null) {
             movies.add(movie);
-            System.out.println("Movie added: " + movie);
+            return true;
         } else {
-            System.out.println("Movie with the title '" + movie.getTitle() + "' already exists.");
+            return false;  // Movie already exists
         }
     }
 
@@ -30,7 +30,7 @@ public class MovieCollection {
     }
 
     // Update - update individual movie fields
-    public void updateMovie(String title, Movie updatedMovie) {
+    public boolean updateMovie(String title, Movie updatedMovie) {
         Movie existingMovie = findMovie(title);
         if (existingMovie != null) {
             // Update fields only if they are valid
@@ -51,20 +51,20 @@ public class MovieCollection {
             }
             existingMovie.setColor(updatedMovie.isColor()); // Color is a boolean, so we update it always
 
-            System.out.println("Movie updated: " + existingMovie);
+            return true;
         } else {
-            System.out.println("Movie not found.");
+            return false;  // Movie not found
         }
     }
 
     // Delete - remove a movie
-    public void deleteMovie(String title) {
+    public boolean deleteMovie(String title) {
         Movie movie = findMovie(title);
         if (movie != null) {
             movies.remove(movie);
-            System.out.println("Movie deleted: " + movie);
+            return true;
         } else {
-            System.out.println("Movie not found.");
+            return false;  // Movie not found
         }
     }
 
@@ -101,17 +101,16 @@ public class MovieCollection {
             return;
         }
 
-        List<Movie> foundMovies;
         switch (searchBy.toLowerCase()) {
             case "title":
-                foundMovies = movies.stream()
+                movies.stream()
                         .filter(m -> m.getTitle().toLowerCase().contains(searchTerm.toLowerCase()))
                         .collect(Collectors.toList());
                 break;
             case "year":
                 try {
                     int year = Integer.parseInt(searchTerm);
-                    foundMovies = movies.stream()
+                    movies.stream()
                             .filter(m -> m.getYear() == year)
                             .collect(Collectors.toList());
                 } catch (NumberFormatException e) {
@@ -120,24 +119,18 @@ public class MovieCollection {
                 }
                 break;
             case "director":
-                foundMovies = movies.stream()
+                movies.stream()
                         .filter(m -> m.getDirector().toLowerCase().contains(searchTerm.toLowerCase()))
                         .collect(Collectors.toList());
                 break;
             case "genre":
-                foundMovies = movies.stream()
+                movies.stream()
                         .filter(m -> m.getGenre().toLowerCase().contains(searchTerm.toLowerCase()))
                         .collect(Collectors.toList());
                 break;
             default:
                 System.out.println("Invalid search option. Please choose title, year, director, or genre.");
-                return;
         }
 
-        if (foundMovies.isEmpty()) {
-            System.out.println("No movies found matching the search criteria.");
-        } else {
-            foundMovies.forEach(System.out::println);
-        }
     }
 }

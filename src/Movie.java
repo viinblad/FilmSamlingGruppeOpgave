@@ -5,8 +5,8 @@ public class Movie {
     private int year;
     private String director;
     private String genre;
-    private int lengthInMinutes; // attribute for length in minutes
-    private boolean isColor; // attribute for whether the movie is in color
+    private int lengthInMinutes; // Attribute for length in minutes
+    private boolean isColor; // Attribute for whether the movie is in color
 
     // Constructor
     public Movie(String title, int year, String director, String genre, int lengthInMinutes, boolean isColor) {
@@ -24,6 +24,9 @@ public class Movie {
     }
 
     public void setTitle(String title) {
+        if (title == null || title.trim().isEmpty()) {
+            throw new IllegalArgumentException("Title cannot be empty.");
+        }
         this.title = title;
     }
 
@@ -35,7 +38,7 @@ public class Movie {
         if (year > 1887 && year <= Year.now().getValue()) { // Simple validation
             this.year = year;
         } else {
-            throw new IllegalArgumentException("Invalid year entered. Year must be between 1888 and current year.");
+            throw new IllegalArgumentException("Invalid year entered. Year must be between 1888 and the current year.");
         }
     }
 
@@ -44,6 +47,9 @@ public class Movie {
     }
 
     public void setDirector(String director) {
+        if (director == null || director.trim().isEmpty()) {
+            throw new IllegalArgumentException("Director cannot be empty.");
+        }
         this.director = director;
     }
 
@@ -52,6 +58,9 @@ public class Movie {
     }
 
     public void setGenre(String genre) {
+        if (genre == null || genre.trim().isEmpty()) {
+            throw new IllegalArgumentException("Genre cannot be empty.");
+        }
         this.genre = genre;
     }
 
@@ -63,7 +72,7 @@ public class Movie {
         if (lengthInMinutes > 0) { // Simple validation for positive length
             this.lengthInMinutes = lengthInMinutes;
         } else {
-            throw new IllegalArgumentException("Invalid length entered. Length must be positive.");
+            throw new IllegalArgumentException("Invalid length entered. Length must be a positive number.");
         }
     }
 
@@ -83,7 +92,7 @@ public class Movie {
                 ", director='" + director + '\'' +
                 ", genre='" + genre + '\'' +
                 ", length=" + lengthInMinutes + " minutes" +
-                ", " + (isColor ? "In color" : "Black and white") + // For displaying whether the movie is in color
+                ", " + (isColor ? "In color" : "Black and white") +
                 '}';
     }
 
@@ -92,11 +101,18 @@ public class Movie {
         if (this == obj) return true;
         if (obj == null || getClass() != obj.getClass()) return false;
         Movie movie = (Movie) obj;
-        return title.equalsIgnoreCase(movie.title); // Compare based on title (case-insensitive)
+        return title.equalsIgnoreCase(movie.title) &&
+                year == movie.year &&
+                director.equalsIgnoreCase(movie.director) &&
+                genre.equalsIgnoreCase(movie.genre);
     }
 
     @Override
     public int hashCode() {
-        return title.toLowerCase().hashCode(); // Use title for hash code (case-insensitive)
+        int result = title.toLowerCase().hashCode();
+        result = 31 * result + year;
+        result = 31 * result + director.toLowerCase().hashCode();
+        result = 31 * result + genre.toLowerCase().hashCode();
+        return result;
     }
 }
