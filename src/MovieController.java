@@ -24,8 +24,8 @@ public class MovieController {
     public void listMovies(String sortBy){
         collection.listMovies(sortBy);
     }
-    public ArrayList<Movie> searchMovies(String searchTerm, String searvhBy){
-        return collection.searchMovies(searchTerm, searvhBy);
+    public ArrayList<Movie> searchMovies(String searchTerm, String searchBy){
+        return collection.searchMovies(searchTerm, searchBy);
     }
 
 }
