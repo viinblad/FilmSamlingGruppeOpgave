@@ -132,11 +132,11 @@ public class UserInterface {
         System.out.print("Enter title of movie to delete: ");
         String title = scanner.nextLine();
 
-        Movie movie = controller.findMovie(title); // Find først filmen
+        Movie deletedMovie = controller.findMovie(title); // Find først filmen
 
-        if (movie != null) {
+        if (deletedMovie!= null) {
             controller.deleteMovie(title); // Slet filmen hvis fundet
-            System.out.println("Movie is deleted.");
+            System.out.println("You just deleted " + deletedMovie);
         } else {
             System.out.println("Movie not found."); // Hvis ikke fundet
         }
