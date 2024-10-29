@@ -48,20 +48,23 @@ class MovieCollectionTest {
     void searchMoviesByTitle() {
         // Arrange
         MovieCollection collection = new MovieCollection();
-        Movie movie1 = new Movie("Batman", 2014, "Martin", "Action", 140, true);
+        Movie movie1 = new Movie("Interstellar", 2014, "Martin", "Action", 140, true);
         Movie movie2 = new Movie("Spiderman 2", 2018, "Victor", "Action", 180, true);
-        Movie movie3 = new Movie("Batman 2", 2013, "Rasmus", "Action", 83, true);
+        Movie movie3 = new Movie("Interstellar 2", 2013, "Rasmus", "Action", 83, true);
 
         collection.addMovie(movie1);
         collection.addMovie(movie2);
         collection.addMovie(movie3);
 
         // Act
-        ArrayList<Movie> actualResult = collection.searchMovies("Batman", "title");
+        ArrayList<Movie> actualResult = collection.searchMovies("Interstellar", "title");
+
+        // Debug: print resultatet af søgningen for at verificere indholdet
+        System.out.println("Search result: " + actualResult);
 
         // Assert
         assertEquals(2, actualResult.size());
-        assertFalse(actualResult.contains(movie1));
+        assertTrue(actualResult.contains(movie1));
         assertTrue(actualResult.contains(movie3));
     }
 

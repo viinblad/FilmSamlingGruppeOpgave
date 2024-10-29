@@ -12,12 +12,10 @@ public class MovieCollection {
         // movies add for test
         Movie movie1 = new Movie("Spiderman", 2014, "Martin", "Action", 140,true);
         Movie movie2 = new Movie("Batman", 2018, "Victor", "Action", 180,true);
-        Movie movie3 = new Movie("Interstellar", 2014, "Christopher Nolan", "Sci-fi", 169,true);
         Movie movie4 = new Movie("Psycho", 1960, "Rasmus", "Horror", 87,false);
 
         movies.add(movie1);
         movies.add(movie2);
-        movies.add(movie3);
         movies.add(movie4);
     }
 
