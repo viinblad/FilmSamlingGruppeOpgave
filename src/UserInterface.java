@@ -1,3 +1,4 @@
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class UserInterface {
@@ -126,28 +127,39 @@ public class UserInterface {
         }
     }
 
-// delete movie method
+    // delete movie method
     private static void deleteMovie(Scanner scanner, MovieController controller) {
         System.out.print("Enter title of movie to delete: ");
         String title = scanner.nextLine();
         controller.deleteMovie(title); // Brug controlleren
     }
-// show movie list method
+
+    // show movie list method
     private static void listMovies(Scanner scanner, MovieController controller) {
         System.out.println("Choose sorting option: title, year, director, or genre");
         String sortBy = scanner.nextLine();
         controller.listMovies(sortBy); // Brug controlleren
     }
-// search movie method by specific
+
+    // search movie method by specific
     private static void searchMovies(Scanner scanner, MovieController controller) {
         System.out.print("Enter search term: ");
         String searchTerm = scanner.nextLine();
 
         System.out.println("Choose search option: title, year, director, or genre");
         String searchBy = scanner.nextLine();
-        controller.searchMovies(searchTerm, searchBy); // use controller
+
+        ArrayList<Movie> searchResults = controller.searchMovies(searchTerm, searchBy); // use controller
+
+        if (!searchResults.isEmpty()){
+            System.out.println("The following results was found: " + searchResults);
+        }
+        else {
+            System.out.println("No moives found");
+        }
     }
-// user input year rule
+
+    // user input year rule
     private static int getYearInput(Scanner scanner, String prompt) {
         int year = 0;
         while (true) {
@@ -167,7 +179,8 @@ public class UserInterface {
         }
         return year;
     }
-// rule for no negative number input from user
+
+    // rule for no negative number input from user
     private static int getPositiveIntInput(Scanner scanner, String prompt) {
         int value;
         while (true) {
@@ -186,7 +199,8 @@ public class UserInterface {
             }
         }
     }
-// color input true or false method - boolean
+
+    // color input true or false method - boolean
     private static boolean getBooleanInput(Scanner scanner, String prompt) {
         while (true) {
             System.out.print(prompt);
