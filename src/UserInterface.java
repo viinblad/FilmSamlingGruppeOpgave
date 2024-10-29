@@ -136,7 +136,7 @@ public class UserInterface {
 
         if (deletedMovie!= null) {
             controller.deleteMovie(title); // Slet filmen hvis fundet
-            System.out.println("You just deleted " + deletedMovie);
+            System.out.println("You just deleted " + deletedMovie );
         } else {
             System.out.println("Movie not found."); // Hvis ikke fundet
         }

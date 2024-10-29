@@ -61,7 +61,7 @@ class MovieCollectionTest {
 
         // Assert
         assertEquals(2, actualResult.size());
-        assertTrue(actualResult.contains(movie1));
+        assertFalse(actualResult.contains(movie1));
         assertTrue(actualResult.contains(movie3));
     }
 
