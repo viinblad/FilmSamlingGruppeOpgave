@@ -131,8 +131,19 @@ public class UserInterface {
     private static void deleteMovie(Scanner scanner, MovieController controller) {
         System.out.print("Enter title of movie to delete: ");
         String title = scanner.nextLine();
-        controller.deleteMovie(title); // Brug controlleren
+
+        Movie movie = controller.findMovie(title); // Find først filmen
+
+        if (movie != null) {
+            controller.deleteMovie(title); // Slet filmen hvis fundet
+            System.out.println("Movie is deleted.");
+        } else {
+            System.out.println("Movie not found."); // Hvis ikke fundet
+        }
     }
+
+
+
 
     // show movie list method
     private static void listMovies(Scanner scanner, MovieController controller) {
