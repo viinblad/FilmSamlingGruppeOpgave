@@ -68,6 +68,28 @@ class MovieCollectionTest {
         assertTrue(actualResult.contains(movie3));
     }
 
+    @DisplayName("Test for deleting an existing movie")
+    @Test
+    void deleteExistingMovie() {
+        // Arrange
+        MovieCollection collection = new MovieCollection();
+        Movie movie1 = new Movie("Inception", 2010, "Christopher Nolan", "Sci-Fi", 148, true);
+        Movie movie2 = new Movie("The Matrix", 1999, "The Wachowskis", "Sci-Fi", 136, true);
+        collection.addMovie(movie1);
+        collection.addMovie(movie2);
+
+        // Act
+        boolean isDeleted = collection.deleteMovie("Inception");
+
+        // Debug: print the size of the collection after deletion
+        System.out.println("Collection size after deletion: " + collection.getMovies().size());
+
+        // Assert
+        assertTrue(isDeleted, "The movie should be successfully deleted.");
+        assertEquals(1, collection.getMovies().size(), "There should be only one movie left after deletion.");
+        assertFalse(collection.getMovies().contains(movie1), "The deleted movie should no longer be in the collection.");
+    }
+
 
 
 
