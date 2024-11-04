@@ -1,3 +1,5 @@
+import model.Movie;
+import model.MovieCollection;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 

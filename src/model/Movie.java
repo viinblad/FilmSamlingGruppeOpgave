@@ -1,3 +1,9 @@
+package model;
+
+import controller.*;
+import datasource.*;
+import model.*;
+import ui.*;
 import java.time.Year;
 
 public class Movie {
@@ -86,7 +92,7 @@ public class Movie {
 
     @Override
     public String toString() {
-        return "Movie {" +
+        return "model.Movie {" +
                 "title='" + title + '\'' +
                 ", year=" + year +
                 ", director='" + director + '\'' +

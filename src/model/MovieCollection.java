@@ -1,3 +1,5 @@
+package model;
+
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
@@ -10,9 +12,9 @@ public class MovieCollection {
         this.movies = new ArrayList<>();
 
         // movies add for test
-        //Movie movie1 = new Movie("Spiderman", 2014, "Martin", "Action", 140,true);
-       // Movie movie2 = new Movie("Batman", 2018, "Victor", "Action", 180,true);
-       // Movie movie4 = new Movie("Psycho", 1960, "Rasmus", "Horror", 87,false);
+        //model.Movie movie1 = new model.Movie("Spiderman", 2014, "Martin", "Action", 140,true);
+       // model.Movie movie2 = new model.Movie("Batman", 2018, "Victor", "Action", 180,true);
+       // model.Movie movie4 = new model.Movie("Psycho", 1960, "Rasmus", "Horror", 87,false);
 
         //movies.add(movie1);
         //movies.add(movie2);
@@ -30,7 +32,7 @@ public class MovieCollection {
             movies.add(movie);
             return true;
         } else {
-            return false;  // Movie already exists
+            return false;  // model.Movie already exists
         }
     }
 
@@ -66,7 +68,7 @@ public class MovieCollection {
 
             return true;
         } else {
-            return false;  // Movie not found
+            return false;  // model.Movie not found
         }
     }
 
@@ -77,7 +79,7 @@ public class MovieCollection {
             movies.remove(movie);
             return true;
         } else {
-            return false;  // Movie not found
+            return false;  // model.Movie not found
         }
     }
 

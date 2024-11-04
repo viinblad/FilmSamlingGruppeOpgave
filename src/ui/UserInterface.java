@@ -1,3 +1,9 @@
+package ui;
+
+import controller.MovieController;
+import model.Movie;
+import model.MovieCollection;
+
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -44,11 +50,11 @@ public class UserInterface {
     }
 
     private static void printMenu() {
-        System.out.println("\n--- Movie Collection Menu ---");
-        System.out.println("1) Add Movie");
-        System.out.println("2) Find Movie");
-        System.out.println("3) Update Movie");
-        System.out.println("4) Delete Movie");
+        System.out.println("\n--- model.Movie Collection Menu ---");
+        System.out.println("1) Add model.Movie");
+        System.out.println("2) Find model.Movie");
+        System.out.println("3) Update model.Movie");
+        System.out.println("4) Delete model.Movie");
         System.out.println("5) List All Movies");
         System.out.println("6) Search Movies by keywords");
         System.out.println("7) Exit");
@@ -90,7 +96,7 @@ public class UserInterface {
         if (movie != null) {
             System.out.println("Found: " + movie);
         } else {
-            System.out.println("Movie not found.");
+            System.out.println("model.Movie not found.");
         }
     }
 
@@ -123,7 +129,7 @@ public class UserInterface {
             );
             controller.updateMovie(title, updatedMovie); // Brug controlleren
         } else {
-            System.out.println("Movie not found.");
+            System.out.println("model.Movie not found.");
         }
     }
 
@@ -138,7 +144,7 @@ public class UserInterface {
             controller.deleteMovie(title); // Slet filmen hvis fundet
             System.out.println("You just deleted " + deletedMovie );
         } else {
-            System.out.println("Movie not found."); // Hvis ikke fundet
+            System.out.println("model.Movie not found."); // Hvis ikke fundet
         }
     }
 

@@ -1,3 +1,9 @@
+package controller;
+
+import model.Movie;
+import model.*;
+
+
 import java.util.ArrayList;
 
 public class MovieController {
