@@ -1,38 +1,34 @@
 package model;
 
+import datasource.FileHandler;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
 
 public class MovieCollection {
     private final List<Movie> movies;
+    private final FileHandler fileHandler;
 
     // Constructor
     public MovieCollection() {
         this.movies = new ArrayList<>();
-
-        // movies add for test
-        //model.Movie movie1 = new model.Movie("Spiderman", 2014, "Martin", "Action", 140,true);
-       // model.Movie movie2 = new model.Movie("Batman", 2018, "Victor", "Action", 180,true);
-       // model.Movie movie4 = new model.Movie("Psycho", 1960, "Rasmus", "Horror", 87,false);
-
-        //movies.add(movie1);
-        //movies.add(movie2);
-        //.add(movie4);
+        this.fileHandler = new FileHandler("resources/moviedatabase.txt"); // Update the path as necessary
+        loadMoviesFromFile(); // Load movies from file on initialization
     }
 
     public List<Movie> getMovies() {
-        return movies;
+        return new ArrayList<>(movies); // Return a copy to prevent external modification
     }
-
 
     // Create - add a movie (with duplicate title check)
     public boolean addMovie(Movie movie) {
         if (findMovie(movie.getTitle()) == null) {
             movies.add(movie);
+            saveMoviesToFile(); // Save to file after adding
             return true;
         } else {
-            return false;  // model.Movie already exists
+            return false;  // Movie already exists
         }
     }
 
@@ -66,9 +62,10 @@ public class MovieCollection {
             }
             existingMovie.setColor(updatedMovie.isColor()); // Color is a boolean, so we update it always
 
+            saveMoviesToFile(); // Save to file after updating
             return true;
         } else {
-            return false;  // model.Movie not found
+            return false;  // Movie not found
         }
     }
 
@@ -77,19 +74,19 @@ public class MovieCollection {
         Movie movie = findMovie(title);
         if (movie != null) {
             movies.remove(movie);
+            saveMoviesToFile(); // Save to file after deletion
             return true;
         } else {
-            return false;  // model.Movie not found
+            return false;  // Movie not found
         }
     }
 
     // List all movies that can be sorted by title, year, director, or genre
-    public void listMovies(String sortBy) {
-        if (movies.isEmpty()) {
-            System.out.println("No movies in the collection.");
-            return;
-        }
+    public List<Movie> listMovies(String sortBy) {
+        // Create a new list to avoid modifying the original list
+        List<Movie> sortedMovies = new ArrayList<>(movies);
 
+        // Sort the movies based on the specified criteria
         Comparator<Movie> comparator;
         switch (sortBy.toLowerCase()) {
             case "year":
@@ -106,7 +103,12 @@ public class MovieCollection {
                 comparator = Comparator.comparing(Movie::getTitle, String.CASE_INSENSITIVE_ORDER);
                 break;
         }
-        movies.stream().sorted(comparator).forEach(System.out::println);
+
+        // Sort the list
+        sortedMovies.sort(comparator);
+
+        // Return the sorted list of movies
+        return sortedMovies;
     }
 
     // Search for movies by title, year, director, or genre
@@ -127,11 +129,17 @@ public class MovieCollection {
                 break;
 
             case "year":
-                int year = Integer.parseInt(searchTerm);
-                for (Movie movie : movies) {
-                    if (movie.getYear() == year) {
-                        foundMovies.add(movie);
+                int year;
+                try {
+                    year = Integer.parseInt(searchTerm);
+                    for (Movie movie : movies) {
+                        if (movie.getYear() == year) {
+                            foundMovies.add(movie);
+                        }
                     }
+                } catch (NumberFormatException e) {
+                    // Handle the case where the search term is not a valid number
+                    System.out.println("Invalid year format.");
                 }
                 break;
 
@@ -158,4 +166,21 @@ public class MovieCollection {
         return foundMovies;
     }
 
+    // Load movies from file
+    public void loadMoviesFromFile() {
+        try {
+            fileHandler.loadMoviesFromFile(this); // Pass this MovieCollection instance
+        } catch (IOException e) {
+            System.err.println("Failed to load movies from file: " + e.getMessage());
+        }
+    }
+
+    // Save movies to file
+    private void saveMoviesToFile() {
+        try {
+            fileHandler.saveCollectionToFile(this); // Pass this MovieCollection instance
+        } catch (IOException e) {
+            System.err.println("Error saving movies to file: " + e.getMessage());
+        }
+    }
 }

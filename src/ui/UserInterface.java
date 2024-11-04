@@ -4,7 +4,10 @@ import controller.MovieController;
 import model.Movie;
 import model.MovieCollection;
 
+
+import java.io.IOException;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
 public class UserInterface {
@@ -16,8 +19,7 @@ public class UserInterface {
 
         while (running) {
             printMenu();
-            int choice = getChoice(scanner);
-            scanner.nextLine(); // Consume newline
+            int choice = getChoice(scanner, 7);
 
             switch (choice) {
                 case 1:
@@ -50,24 +52,35 @@ public class UserInterface {
     }
 
     private static void printMenu() {
-        System.out.println("\n--- model.Movie Collection Menu ---");
-        System.out.println("1) Add model.Movie");
-        System.out.println("2) Find model.Movie");
-        System.out.println("3) Update model.Movie");
-        System.out.println("4) Delete model.Movie");
+        System.out.println("\n--- Movie Collection Menu ---");
+        System.out.println("1) Add Movie");
+        System.out.println("2) Find Movie");
+        System.out.println("3) Update Movie");
+        System.out.println("4) Delete Movie");
         System.out.println("5) List All Movies");
         System.out.println("6) Search Movies by keywords");
         System.out.println("7) Exit");
         System.out.print("Choose an option: ");
     }
 
-    private static int getChoice(Scanner scanner) {
-        while (!scanner.hasNextInt()) {
-            System.out.println("Invalid input. Please enter a number.");
-            scanner.next(); // Discard invalid input
-            System.out.print("Choose an option: ");
+    private static int getChoice(Scanner scanner, int maxOption) {
+        int choice;
+        while (true) {
+            System.out.print("Enter your choice (1-" + maxOption + "): ");
+            if (scanner.hasNextInt()) {
+                choice = scanner.nextInt();
+                scanner.nextLine(); // Consume newline
+                if (choice >= 1 && choice <= maxOption) {
+                    break;  // Valid choice
+                } else {
+                    System.out.println("Invalid choice. Please select a number between 1 and " + maxOption + ".");
+                }
+            } else {
+                System.out.println("Invalid input. Please enter a number.");
+                scanner.next(); // Discard invalid input
+            }
         }
-        return scanner.nextInt();
+        return choice;
     }
 
     private static void addMovie(Scanner scanner, MovieController controller) {
@@ -96,7 +109,7 @@ public class UserInterface {
         if (movie != null) {
             System.out.println("Found: " + movie);
         } else {
-            System.out.println("model.Movie not found.");
+            System.out.println("Movie not found.");
         }
     }
 
@@ -129,7 +142,7 @@ public class UserInterface {
             );
             controller.updateMovie(title, updatedMovie); // Brug controlleren
         } else {
-            System.out.println("model.Movie not found.");
+            System.out.println("Movie not found.");
         }
     }
 
@@ -144,7 +157,7 @@ public class UserInterface {
             controller.deleteMovie(title); // Slet filmen hvis fundet
             System.out.println("You just deleted " + deletedMovie );
         } else {
-            System.out.println("model.Movie not found."); // Hvis ikke fundet
+            System.out.println("Movie not found."); // Hvis ikke fundet
         }
     }
 
@@ -152,10 +165,44 @@ public class UserInterface {
 
 
     // show movie list method
-    private static void listMovies(Scanner scanner, MovieController controller) {
-        System.out.println("Choose sorting option: title, year, director, or genre");
-        String sortBy = scanner.nextLine();
-        controller.listMovies(sortBy); // Brug controlleren
+    private static void listMovies(Scanner scanner, MovieController controller, MovieCollection collection) {
+        if (collection.getMovies().isEmpty()) {
+            System.out.println("No movies in the collection.");
+            return;
+        }
+
+        System.out.println("Choose sorting option:");
+        System.out.println("1) Title");
+        System.out.println("2) Year");
+        System.out.println("3) Director");
+        System.out.println("4) Genre");
+
+        int choice = getChoice(scanner, 4);  // Get user's choice with validation
+        String sortBy;
+
+        // Map the user's choice to a sorting field
+        switch (choice) {
+            case 1:
+                sortBy = "title";
+                break;
+            case 2:
+                sortBy = "year";
+                break;
+            case 3:
+                sortBy = "director";
+                break;
+            case 4:
+                sortBy = "genre";
+                break;
+            default:
+                System.out.println("Invalid choice. Defaulting to title.");
+                sortBy = "title";
+        }
+
+        List<Movie> sortedMovies = controller.listMovies(sortBy);  // Get sorted list from controller
+        System.out.println("\nMovies sorted by " + sortBy + ":");
+        sortedMovies.forEach(System.out::println);  // Display each movie
+        System.out.println();
     }
 
     // search movie method by specific
@@ -163,18 +210,45 @@ public class UserInterface {
         System.out.print("Enter search term: ");
         String searchTerm = scanner.nextLine();
 
-        System.out.println("Choose search option: title, year, director, or genre");
-        String searchBy = scanner.nextLine();
+        System.out.println("Choose search option:");
+        System.out.println("1) Title");
+        System.out.println("2) Year");
+        System.out.println("3) Director");
+        System.out.println("4) Genre");
 
-        ArrayList<Movie> searchResults = controller.searchMovies(searchTerm, searchBy); // use controller
+        int choice = getChoice(scanner, 4);  // Get user's choice with validation
+        String searchBy;
 
-        if (!searchResults.isEmpty()){
-            System.out.println("The following results was found: " + searchResults);
+        // Map the user's choice to a search field
+        switch (choice) {
+            case 1:
+                searchBy = "title";
+                break;
+            case 2:
+                searchBy = "year";
+                break;
+            case 3:
+                searchBy = "director";
+                break;
+            case 4:
+                searchBy = "genre";
+                break;
+            default:
+                System.out.println("Invalid choice. Defaulting to title.");
+                searchBy = "title";
         }
-        else {
-            System.out.println("No moives found");
+
+        ArrayList<Movie> searchResults = controller.searchMovies(searchTerm, searchBy); // Use controller
+
+        if (!searchResults.isEmpty()) {
+            System.out.println("The following results were found: ");
+            searchResults.forEach(System.out::println);
+        } else {
+            System.out.println("No movies found.");
         }
     }
+
+
 
     // user input year rule
     private static int getYearInput(Scanner scanner, String prompt) {

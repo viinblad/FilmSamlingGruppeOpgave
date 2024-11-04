@@ -1,9 +1,6 @@
 package model;
 
-import controller.*;
-import datasource.*;
-import model.*;
-import ui.*;
+
 import java.time.Year;
 
 public class Movie {
