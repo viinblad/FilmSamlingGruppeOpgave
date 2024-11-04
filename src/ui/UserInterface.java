@@ -11,7 +11,7 @@ import java.util.List;
 import java.util.Scanner;
 
 public class UserInterface {
-    public static void startProgram() {
+    public static void startProgram() throws IOException {
         MovieCollection collection = new MovieCollection();
         MovieController controller = new MovieController(collection);  // Brug controlleren
         Scanner scanner = new Scanner(System.in);
