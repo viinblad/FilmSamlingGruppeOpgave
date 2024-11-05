@@ -37,7 +37,7 @@ public class FileHandler {
                 Movie movie = undivideMovies(lineData); // Convert the line into a Movie object
 
                 if (movie != null) {
-                    collection.addMovie(movie); // Add the Movie object to the collection
+                    collection.addMovie(movie); // Only add valid movies
                 }
             }
         } catch (FileNotFoundException e) {
@@ -66,7 +66,7 @@ public class FileHandler {
         String[] data = movieData.split(";"); // Split data by ';'
         if (data.length != 6) {
             System.err.println("Invalid data format: " + movieData);
-            return null; // Invalid data format
+            return null; // Return null if the data format is invalid
         }
         try {
             String title = data[0];
