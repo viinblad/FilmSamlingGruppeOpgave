@@ -1,1 +1,99 @@
-hej;2012;23;23;232;true
+Inception;2010;Christopher Nolan;Sci-Fi;148;true
+The Matrix;1999;The Wachowskis;Sci-Fi;136;true
+Interstellar;2014;Christopher Nolan;Sci-Fi;169;true
+Blade Runner 2049;2017;Denis Villeneuve;Sci-Fi;164;true
+Star Wars: Episode IV - A New Hope;1977;George Lucas;Sci-Fi;121;true
+The Fifth Element;1997;Luc Besson;Sci-Fi;126;true
+E.T. the Extra-Terrestrial;1982;Steven Spielberg;Sci-Fi;115;true
+Arrival;2016;Denis Villeneuve;Sci-Fi;116;true
+Ex Machina;2014;Alex Garland;Sci-Fi;108;true
+Minority Report;2002;Steven Spielberg;Sci-Fi;145;true
+Gattaca;1997;Andrew Niccol;Sci-Fi;106;true
+Children of Men;2006;Alfonso Cuarón;Sci-Fi;109;true
+The Terminator;1984;James Cameron;Sci-Fi;107;true
+A.I. Artificial Intelligence;2001;Steven Spielberg;Sci-Fi;146;true
+District 9;2009;Neill Blomkamp;Sci-Fi;112;true
+The Prestige;2006;Christopher Nolan;Sci-Fi;130;true
+Gravity;2013;Alfonso Cuarón;Sci-Fi;91;true
+Her;2013;Spike Jonze;Sci-Fi;126;true
+The Martian;2015;Ridley Scott;Sci-Fi;144;true
+Looper;2012;Rian Johnson;Sci-Fi;118;true
+Mad Max: Fury Road;2015;George Miller;Action;120;true
+Die Hard;1988;John McTiernan;Action;132;true
+Gladiator;2000;Ridley Scott;Action;155;true
+John Wick;2014;Chad Stahelski;Action;101;true
+The Dark Knight;2008;Christopher Nolan;Action;152;true
+The Avengers;2012;Joss Whedon;Action;143;true
+Kill Bill: Vol. 1;2003;Quentin Tarantino;Action;111;true
+Black Panther;2018;Ryan Coogler;Action;134;true
+Indiana Jones: Raiders of the Lost Ark;1981;Steven Spielberg;Action;115;true
+Terminator 2: Judgment Day;1991;James Cameron;Action;137;true
+Mission: Impossible - Fallout;2018;Christopher McQuarrie;Action;147;true
+The Bourne Identity;2002;Doug Liman;Action;119;true
+Casino Royale;2006;Martin Campbell;Action;144;true
+Avatar;2009;James Cameron;Action;162;true
+Spider-Man: Homecoming;2017;Jon Watts;Action;133;true
+Furious 7;2015;James Wan;Action;137;true
+The Matrix Reloaded;2003;Lana Wachowski;Action;138;true
+RoboCop;1987;Paul Verhoeven;Action;102;true
+Transformers;2007;Michael Bay;Action;143;true
+The Equalizer;2014;Antoine Fuqua;Action;132;true
+The Shawshank Redemption;1994;Frank Darabont;Drama;142;true
+Forrest Gump;1994;Robert Zemeckis;Drama;142;true
+The Godfather;1972;Francis Ford Coppola;Drama;175;true
+12 Years a Slave;2013;Steve McQueen;Drama;134;true
+The Pursuit of Happyness;2006;Gabriele Muccino;Drama;117;true
+Schindler's List;1993;Steven Spielberg;Drama;195;true
+A Beautiful Mind;2001;Ron Howard;Drama;135;true
+Fight Club;1999;David Fincher;Drama;139;true
+Moonlight;2016;Barry Jenkins;Drama;111;true
+The Social Network;2010;David Fincher;Drama;120;true
+Dallas Buyers Club;2013;Jean-Marc Vallée;Drama;117;true
+Good Will Hunting;1997;Gus Van Sant;Drama;126;true
+The King's Speech;2010;Tom Hooper;Drama;118;true
+The Revenant;2015;Alejandro G. Iñárritu;Drama;156;true
+Dead Poets Society;1989;Peter Weir;Drama;128;true
+The Fault in Our Stars;2014;Josh Boone;Drama;126;true
+The Green Mile;1999;Frank Darabont;Drama;189;true
+The Help;2011;Tate Taylor;Drama;146;true
+Little Women;2019;Greta Gerwig;Drama;135;true
+Spotlight;2015;Tom McCarthy;Drama;128;true
+Get Out;2017;Jordan Peele;Horror;104;true
+A Nightmare on Elm Street;1984;Wes Craven;Horror;91;true
+The Exorcist;1973;William Friedkin;Horror;122;true
+It;2017;Andy Muschietti;Horror;135;true
+The Shining;1980;Stanley Kubrick;Horror;146;true
+Hereditary;2018;Ari Aster;Horror;127;true
+The Babadook;2014;Jennifer Kent;Horror;93;true
+Midsommar;2019;Ari Aster;Horror;147;true
+The Witch;2015;Robert Eggers;Horror;100;true
+Scream;1996;Wes Craven;Horror;111;true
+Us;2019;Jordan Peele;Horror;116;true
+It Follows;2014;David Robert Mitchell;Horror;100;true
+The Conjuring;2013;James Wan;Horror;112;true
+Sinister;2012;Scott Derrickson;Horror;110;true
+Get Out;2017;Jordan Peele;Horror;104;true
+Halloween;1978;John Carpenter;Horror;91;true
+Paranormal Activity;2007;Oren Peli;Horror;86;true
+The Ring;2002;Gore Verbinski;Horror;115;true
+A Quiet Place;2018;John Krasinski;Horror;90;true
+The Invisible Man;2020;Leigh Whannell;Horror;124;true
+Superbad;2007;Greg Mottola;Comedy;113;true
+The Hangover;2009;Todd Phillips;Comedy;100;true
+Groundhog Day;1993;Harold Ramis;Comedy;101;true
+Bridesmaids;2011;Paul Feig;Comedy;125;true
+Step Brothers;2008;Adam McKay;Comedy;98;true
+21 Jump Street;2012;Phil Lord;Comedy;109;true
+Mean Girls;2004;Mark Waters;Comedy;97;true
+Zoolander;2001;Ben Stiller;Comedy;89;true
+Tropic Thunder;2008;Ben Stiller;Comedy;107;true
+The 40-Year-Old Virgin;2005;Judd Apatow;Comedy;116;true
+Pitch Perfect;2012;Jason Moore;Comedy;112;true
+The Other Guys;2010;Adam McKay;Comedy;107;true
+Crazy, Stupid, Love;2011;Glenn Ficarra;Comedy;118;true
+Easy A;2010;Will Gluck;Comedy;92;true
+Ferris Bueller's Day Off;1986;John Hughes;Comedy;103;true
+The Grand Budapest Hotel;2014;Wes Anderson;Comedy;99;true
+Shaun of the Dead;2004;Edgar Wright;Comedy;99;true
+Office Space;1999;Mike Judge;Comedy;89;true
+Napoleon Dynamite;2004;Jared Hess;Comedy;96;true
