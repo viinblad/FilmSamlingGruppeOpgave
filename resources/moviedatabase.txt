@@ -72,7 +72,6 @@ Us;2019;Jordan Peele;Horror;116;true
 It Follows;2014;David Robert Mitchell;Horror;100;true
 The Conjuring;2013;James Wan;Horror;112;true
 Sinister;2012;Scott Derrickson;Horror;110;true
-Get Out;2017;Jordan Peele;Horror;104;true
 Halloween;1978;John Carpenter;Horror;91;true
 Paranormal Activity;2007;Oren Peli;Horror;86;true
 The Ring;2002;Gore Verbinski;Horror;115;true

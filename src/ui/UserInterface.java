@@ -19,14 +19,14 @@ public class UserInterface {
 
         while (running) {
             printMenu();
-            int choice = getChoice(scanner, 7);
+            int choice = getChoice(scanner, 8);
 
             switch (choice) {
                 case 1:
-                    addMovie(scanner, controller);
+                    findMovie(scanner, controller);
                     break;
                 case 2:
-                    findMovie(scanner, controller);
+                    addMovie(scanner, controller);
                     break;
                 case 3:
                     updateMovie(scanner, controller);
@@ -35,12 +35,15 @@ public class UserInterface {
                     deleteMovie(scanner, controller);
                     break;
                 case 5:
-                    listMovies(scanner, controller);
+                    listMovies(scanner, controller, collection); // Original option with sorting prompt
                     break;
                 case 6:
-                    searchMovies(scanner, controller);
+                    viewAllMovies(controller, collection);       // New option for unsorted view
                     break;
                 case 7:
+                    searchMovies(scanner, controller);
+                    break;
+                case 8:
                     running = false;
                     System.out.println("Exiting program. Goodbye!");
                     break;
@@ -53,13 +56,14 @@ public class UserInterface {
 
     private static void printMenu() {
         System.out.println("\n--- Movie Collection Menu ---");
-        System.out.println("1) Add Movie");
-        System.out.println("2) Find Movie");
+        System.out.println("1) Find Movie");
+        System.out.println("2) Add Movie");
         System.out.println("3) Update Movie");
         System.out.println("4) Delete Movie");
-        System.out.println("5) List All Movies");
-        System.out.println("6) Search Movies by keywords");
-        System.out.println("7) Exit");
+        System.out.println("5) List All Movies by");  // Keeps sorting option
+        System.out.println("6) View All Movies");      // New option for unsorted view
+        System.out.println("7) Search Movies by keywords");
+        System.out.println("8) Exit");
         System.out.print("Choose an option: ");
     }
 
@@ -164,7 +168,21 @@ public class UserInterface {
 
 
 
-    // show movie list method
+    // show movie list methods
+
+    private static void viewAllMovies(MovieController controller, MovieCollection collection) {
+        if (collection.getMovies().isEmpty()) {
+            System.out.println("No movies in the collection.");
+            return;
+        }
+
+        // Pass "title" to automatically sort by title
+        List<Movie> allMovies = controller.listMovies("title");
+        System.out.println("\nAll Movies in Collection (Sorted by Title):");
+        allMovies.forEach(System.out::println);
+        System.out.println();
+    }
+
     private static void listMovies(Scanner scanner, MovieController controller, MovieCollection collection) {
         if (collection.getMovies().isEmpty()) {
             System.out.println("No movies in the collection.");
