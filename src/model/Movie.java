@@ -109,7 +109,11 @@ public class Movie {
                 director.equalsIgnoreCase(movie.director) &&
                 genre.equalsIgnoreCase(movie.genre);
     }
-
+/* The number 31 is a prime number commonly used in the hashCode()
+Multiplying by 31 before adding ensures that each component of the object (like title, year, etc.)
+influences the final hash code. This helps reduce the likelihood of collisions when different
+objects have the same hash code.
+ */
     @Override
     public int hashCode() {
         int result = title.toLowerCase().hashCode();
