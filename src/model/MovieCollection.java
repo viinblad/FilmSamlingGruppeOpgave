@@ -82,13 +82,14 @@ public class MovieCollection {
     }
 
     // List all movies that can be sorted by title, year, director, or genre
-    public List<Movie> listMovies(String sortBy) {
+    public List<Movie> listMovies(String primarySortBy, String secondarySortBy) {
         // Create a new list to avoid modifying the original list
         List<Movie> sortedMovies = new ArrayList<>(movies);
 
-        // Sort the movies based on the specified criteria
+        // Primary comparator based on the primary sort criterion
         Comparator<Movie> comparator;
-        switch (sortBy.toLowerCase()) {
+
+        switch (primarySortBy.toLowerCase()) {
             case "year":
                 comparator = Comparator.comparingInt(Movie::getYear);
                 break;
@@ -104,12 +105,30 @@ public class MovieCollection {
                 break;
         }
 
-        // Sort the list
+        // Now, add the secondary sorting criterion using thenComparing
+        switch (secondarySortBy.toLowerCase()) {
+            case "year":
+                comparator = comparator.thenComparingInt(Movie::getYear);
+                break;
+            case "director":
+                comparator = comparator.thenComparing(Movie::getDirector, String.CASE_INSENSITIVE_ORDER);
+                break;
+            case "genre":
+                comparator = comparator.thenComparing(Movie::getGenre, String.CASE_INSENSITIVE_ORDER);
+                break;
+            case "title":
+            default:
+                comparator = comparator.thenComparing(Movie::getTitle, String.CASE_INSENSITIVE_ORDER);
+                break;
+        }
+
+        // Sort the list with both primary and secondary sort criteria
         sortedMovies.sort(comparator);
 
         // Return the sorted list of movies
         return sortedMovies;
     }
+
 
     // Search for movies by title, year, director, or genre
     public ArrayList<Movie> searchMovies(String searchTerm, String searchBy) {

@@ -176,9 +176,14 @@ public class UserInterface {
             return;
         }
 
-        // Pass "title" to automatically sort by title
-        List<Movie> allMovies = controller.listMovies("title");
-        System.out.println("\nAll Movies in Collection (Sorted by Title):");
+        // Now we need to specify both primary and secondary sorting parameters.
+        // Since this is for "View All Movies", we could set some default secondary sort parameter.
+        String primarySortBy = "title"; // Default sorting by title
+        String secondarySortBy = "year"; // Default secondary sorting by year
+
+        // Pass both parameters to the controller's listMovies method
+        List<Movie> allMovies = controller.listMovies(primarySortBy, secondarySortBy);
+        System.out.println("\nAll Movies in Collection (Sorted by " + primarySortBy + " and then by " + secondarySortBy + "):");
         allMovies.forEach(System.out::println);
         System.out.println();
     }
@@ -189,39 +194,70 @@ public class UserInterface {
             return;
         }
 
-        System.out.println("Choose sorting option:");
+        System.out.println("Choose primary sorting option:");
         System.out.println("1) Title");
         System.out.println("2) Year");
         System.out.println("3) Director");
         System.out.println("4) Genre");
 
         int choice = getChoice(scanner, 4);  // Get user's choice with validation
-        String sortBy;
+        String primarySortBy;
 
-        // Map the user's choice to a sorting field
+        // Map the user's choice to a primary sorting field
         switch (choice) {
             case 1:
-                sortBy = "title";
+                primarySortBy = "title";
                 break;
             case 2:
-                sortBy = "year";
+                primarySortBy = "year";
                 break;
             case 3:
-                sortBy = "director";
+                primarySortBy = "director";
                 break;
             case 4:
-                sortBy = "genre";
+                primarySortBy = "genre";
                 break;
             default:
                 System.out.println("Invalid choice. Defaulting to title.");
-                sortBy = "title";
+                primarySortBy = "title";
         }
 
-        List<Movie> sortedMovies = controller.listMovies(sortBy);  // Get sorted list from controller
-        System.out.println("\nMovies sorted by " + sortBy + ":");
+        // Now ask for the secondary sorting option
+        System.out.println("Choose secondary sorting option:");
+        System.out.println("1) Title");
+        System.out.println("2) Year");
+        System.out.println("3) Director");
+        System.out.println("4) Genre");
+
+        int secondaryChoice = getChoice(scanner, 4);  // Get user's choice for secondary sort
+        String secondarySortBy;
+
+        // Map the user's choice to a secondary sorting field
+        switch (secondaryChoice) {
+            case 1:
+                secondarySortBy = "title";
+                break;
+            case 2:
+                secondarySortBy = "year";
+                break;
+            case 3:
+                secondarySortBy = "director";
+                break;
+            case 4:
+                secondarySortBy = "genre";
+                break;
+            default:
+                System.out.println("Invalid choice. Defaulting to title.");
+                secondarySortBy = "title";
+        }
+
+        // Get sorted list from the controller
+        List<Movie> sortedMovies = controller.listMovies(primarySortBy, secondarySortBy);
+        System.out.println("\nMovies sorted by " + primarySortBy + " and then by " + secondarySortBy + ":");
         sortedMovies.forEach(System.out::println);  // Display each movie
         System.out.println();
     }
+
 
     // search movie method by specific
     private static void searchMovies(Scanner scanner, MovieController controller) {

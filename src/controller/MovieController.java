@@ -37,9 +37,9 @@ public class MovieController {
     }
 
     // Return the sorted list of movies based on the provided sorting option
-    public List<Movie> listMovies(String sortBy) {
+    public List<Movie> listMovies(String primarySortBy, String secondarySortBy) {
         // Assuming listMovies in MovieCollection returns a List<Movie>
-        return collection.listMovies(sortBy); // Return the sorted list
+        return collection.listMovies(primarySortBy, secondarySortBy);
     }
 
     public ArrayList<Movie> searchMovies(String searchTerm, String searchBy){
