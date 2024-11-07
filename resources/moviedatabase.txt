@@ -32,7 +32,7 @@ Mission: Impossible - Fallout;2018;Christopher McQuarrie;Action;147;true
 The Bourne Identity;2002;Doug Liman;Action;119;true
 Casino Royale;2006;Martin Campbell;Action;144;true
 Avatar;2009;James Cameron;Action;162;true
-Spider-Man: Homecoming;2017;Jon Watts;Action;133;true
+Spiderman: Homecoming;2017;Jon Watts;Action;133;true
 Furious 7;2015;James Wan;Action;137;true
 The Matrix Reloaded;2003;Lana Wachowski;Action;138;true
 RoboCop;1987;Paul Verhoeven;Action;102;true

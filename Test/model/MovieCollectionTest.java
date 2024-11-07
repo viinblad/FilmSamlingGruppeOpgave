@@ -83,7 +83,7 @@ public class MovieCollectionTest {
         movieCollection.addMovie(movie1);
         movieCollection.addMovie(movie2);
 
-        List<Movie> sortedMovies = movieCollection.listMovies("title");
+        List<Movie> sortedMovies = movieCollection.listMovies("title","year");
         assertEquals(2, sortedMovies.size(), "There should be 2 movies in the collection");
         assertEquals("Inception", sortedMovies.get(0).getTitle(), "First movie should be Inception");
         assertEquals("The Shawshank Redemption", sortedMovies.get(1).getTitle(), "Second movie should be The Shawshank Redemption");
