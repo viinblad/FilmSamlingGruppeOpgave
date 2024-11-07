@@ -35,10 +35,10 @@ public class UserInterface {
                     deleteMovie(scanner, controller);
                     break;
                 case 5:
-                    listMovies(scanner, controller, collection); // Original option with sorting prompt
+                    viewAllMovies(controller, collection);       // New option for unsorted view
                     break;
                 case 6:
-                    viewAllMovies(controller, collection);       // New option for unsorted view
+                    listMovies(scanner, controller, collection); // Original option with sorting prompt
                     break;
                 case 7:
                     searchMovies(scanner, controller);
@@ -60,8 +60,8 @@ public class UserInterface {
         System.out.println("2) Add Movie");
         System.out.println("3) Update Movie");
         System.out.println("4) Delete Movie");
-        System.out.println("5) List All Movies by");  // Keeps sorting option
-        System.out.println("6) View All Movies");      // New option for unsorted view
+        System.out.println("5) View All Movies");      // full
+        System.out.println("6) List All Movies by");  //  sorting option in search
         System.out.println("7) Search Movies by keywords");
         System.out.println("8) Exit");
         System.out.print("Choose an option: ");
