@@ -97,6 +97,7 @@ public class UserInterface {
         System.out.print("Enter genre: ");
         String genre = scanner.nextLine();
         int lengthInMinutes = getPositiveIntInput(scanner, "Enter length in minutes (must be positive): ");
+
         boolean isColor = getBooleanInput(scanner, "Is the movie in color? (true/false): ");
 
         boolean added = controller.addMovie(title, year, director, genre, lengthInMinutes, isColor);
@@ -311,7 +312,7 @@ public class UserInterface {
             if (scanner.hasNextInt()) {
                 year = scanner.nextInt();
                 scanner.nextLine(); // Consume newline
-                if (year == 0 || (year > 1887 && year <= java.time.Year.now().getValue())) {
+                if (year > 1887 && year <= java.time.Year.now().getValue()) {
                     break; // Valid year
                 } else {
                     System.out.println("Invalid year.");
@@ -332,10 +333,10 @@ public class UserInterface {
             if (scanner.hasNextInt()) {
                 value = scanner.nextInt();
                 scanner.nextLine(); // Consume newline
-                if (value >= 0) {
+                if (value > 0) {
                     return value;
                 } else {
-                    System.out.println("Invalid input. Must be a positive number.");
+                    System.out.println("Invalid input. Must be a positive number greater than zero.");
                 }
             } else {
                 System.out.println("Invalid input. Please enter a number.");

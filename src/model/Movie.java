@@ -72,10 +72,10 @@ public class Movie {
     }
 
     public void setLengthInMinutes(int lengthInMinutes) {
-        if (lengthInMinutes > 0) { // Simple validation for positive length
+        if (lengthInMinutes > 0) { //set positive input
             this.lengthInMinutes = lengthInMinutes;
         } else {
-            throw new IllegalArgumentException("Invalid length entered. Length must be a positive number.");
+            System.out.println("Invalid length entered. Length must be a positive number.");
         }
     }
 
