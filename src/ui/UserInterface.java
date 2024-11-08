@@ -5,13 +5,13 @@ import model.Movie;
 import model.MovieCollection;
 
 
-import java.io.IOException;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
 public class UserInterface {
-    public static void startProgram() throws IOException {
+    public static void startProgram() {
         MovieCollection collection = new MovieCollection();
         MovieController controller = new MovieController(collection);  // use controlleren
         Scanner scanner = new Scanner(System.in);
