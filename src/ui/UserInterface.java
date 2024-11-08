@@ -13,7 +13,7 @@ import java.util.Scanner;
 public class UserInterface {
     public static void startProgram() throws IOException {
         MovieCollection collection = new MovieCollection();
-        MovieController controller = new MovieController(collection);  // Brug controlleren
+        MovieController controller = new MovieController(collection);  // use controlleren
         Scanner scanner = new Scanner(System.in);
         boolean running = true;
 
@@ -35,10 +35,10 @@ public class UserInterface {
                     deleteMovie(scanner, controller);
                     break;
                 case 5:
-                    viewAllMovies(controller, collection);       // New option for unsorted view
+                    viewAllMovies(controller, collection);
                     break;
                 case 6:
-                    listMovies(scanner, controller, collection); // Original option with sorting prompt
+                    listMovies(scanner, controller, collection);
                     break;
                 case 7:
                     searchMovies(scanner, controller);
@@ -60,8 +60,8 @@ public class UserInterface {
         System.out.println("2) Add Movie");
         System.out.println("3) Update Movie");
         System.out.println("4) Delete Movie");
-        System.out.println("5) View All Movies");      // full
-        System.out.println("6) List All Movies by");  //  sorting option in search
+        System.out.println("5) View All Movies");
+        System.out.println("6) List All Movies by");
         System.out.println("7) Search Movies by keywords");
         System.out.println("8) Exit");
         System.out.print("Choose an option: ");
@@ -146,7 +146,7 @@ public class UserInterface {
                     newLength == 0 ? existingMovie.getLengthInMinutes() : newLength,
                     newIsColor
             );
-            controller.updateMovie(title, updatedMovie); // Brug controlleren
+            controller.updateMovie(title, updatedMovie);
         } else {
             System.out.println("Movie not found.");
         }
@@ -176,8 +176,7 @@ public class UserInterface {
             return;
         }
 
-        // Now we need to specify both primary and secondary sorting parameters.
-        // Since this is for "View All Movies", we could set some default secondary sort parameter.
+        // specify both primary and secondary sorting parameters.
         String primarySortBy = "title"; // Default sorting by title
         String secondarySortBy = "year"; // Default secondary sorting by year
 
